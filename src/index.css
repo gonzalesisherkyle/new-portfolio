@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    @apply bg-dark-bg text-dark-text font-mono transition-colors duration-200 text-sm;
+    background-image: 
+      linear-gradient(rgba(48, 54, 61, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(48, 54, 61, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-pixel tracking-tighter text-white uppercase;
+    line-height: 1.4;
+  }
+}
+
+@layer components {
+  .pixel-border {
+    @apply border-2 border-dark-border;
+    box-shadow: 
+      0 -4px 0 -2px #0d1117, 
+      0 4px 0 -2px #0d1117, 
+      -4px 0 0 -2px #0d1117, 
+      4px 0 0 -2px #0d1117,
+      0 -4px 0 0px #30363d, 
+      0 4px 0 0px #30363d, 
+      -4px 0 0 0px #30363d, 
+      4px 0 0 0px #30363d;
+  }
+
+  .pixel-border-green {
+    @apply border-2 border-primary-400;
+    box-shadow: 
+      0 -4px 0 -2px #0d1117, 
+      0 4px 0 -2px #0d1117, 
+      -4px 0 0 -2px #0d1117, 
+      4px 0 0 -2px #0d1117,
+      0 -4px 0 0px #30a14e, 
+      0 4px 0 0px #30a14e, 
+      -4px 0 0 0px #30a14e, 
+      4px 0 0 0px #30a14e;
+  }
+
+  .btn-pixel {
+    @apply relative inline-block px-6 py-2 font-pixel text-[10px] uppercase transition-all active:translate-y-1;
+    background: #238636;
+    color: white;
+    box-shadow: 
+      inset -4px -4px 0px 0px #216e39,
+      4px 4px 0px 0px rgba(0,0,0,0.5);
+  }
+
+  .btn-pixel-secondary {
+    @apply relative inline-block px-6 py-2 font-pixel text-[10px] uppercase transition-all active:translate-y-1;
+    background: #21262d;
+    color: #c9d1d9;
+    box-shadow: 
+      inset -4px -4px 0px 0px #161b22,
+      4px 4px 0px 0px rgba(0,0,0,0.5);
+    border: 2px solid #30363d;
+  }
+
+  .card-pixel {
+    @apply bg-dark-card p-4 relative border-2 border-dark-border;
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.3);
+  }
+}
+
+section {
+  @apply py-12 md:py-16;
+}
+
+.container-custom {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-dark-bg;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-border border-2 border-dark-bg;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-500;
+}

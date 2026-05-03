@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { HiMenuAlt3, HiX } from 'react-icons/hi';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { HiMenuAlt3, HiX, HiOutlineLogout, HiOutlineViewGrid } from 'react-icons/hi';
+import { useAuth } from '../../context/AuthContext';
 import Container from '../ui/Container';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user, logout } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +18,12 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+    setIsOpen(false);
+  };
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -50,12 +59,38 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+
+            {user && (
+              <div className="flex items-center gap-4 ml-4 pl-4 border-l border-[#30363d]">
+                <Link
+                  to="/admin/dashboard"
+                  className="text-slate-400 hover:text-primary-400 transition-colors text-xl"
+                  title="Admin Dashboard"
+                >
+                  <HiOutlineViewGrid />
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="text-slate-400 hover:text-red-500 transition-colors text-xl"
+                  title="Logout"
+                >
+                  <HiOutlineLogout />
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Mobile Toggle */}
-          <button className="md:hidden text-2xl text-slate-300" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <HiX /> : <HiMenuAlt3 />}
-          </button>
+          <div className="flex items-center gap-4 md:hidden">
+            {user && (
+              <Link to="/admin/dashboard" className="text-xl text-primary-400">
+                <HiOutlineViewGrid />
+              </Link>
+            )}
+            <button className="text-2xl text-slate-300" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <HiX /> : <HiMenuAlt3 />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Nav */}
@@ -73,6 +108,15 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+            
+            {user && (
+              <button
+                onClick={handleLogout}
+                className="font-pixel text-xs uppercase text-red-500 flex items-center gap-2 mt-2 pt-4 border-t border-[#30363d]"
+              >
+                <HiOutlineLogout /> Logout
+              </button>
+            )}
           </div>
         )}
       </Container>

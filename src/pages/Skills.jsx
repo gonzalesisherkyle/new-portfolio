@@ -35,19 +35,19 @@ const Skills = () => {
     <PageWrapper>
       <section className="py-20">
         <Container>
-          <div className="max-w-4xl mb-16 border-l-4 border-primary-500 pl-6">
+          <div className="max-w-4xl mb-10 md:mb-16 border-l-4 border-primary-500 pl-4 md:pl-6">
             <h2 className="text-primary-400 font-pixel text-[10px] mb-2 uppercase tracking-widest">SYSTEM_COMPONENTS</h2>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 uppercase">Technical_Arsenal</h1>
-            <p className="text-slate-500 font-mono text-sm max-w-xl">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 uppercase break-words">Technical_Arsenal</h1>
+            <p className="text-slate-500 font-mono text-xs md:text-sm max-w-xl">
               {'>'} Loading modules... OK<br />
               {'>'} Deep expertise in full-stack engineering and modern AI integration.
             </p>
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
               {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="h-24 bg-[#161b22] card-pixel animate-pulse" />
+                <div key={i} className="h-20 md:h-24 bg-[#161b22] card-pixel animate-pulse" />
               ))}
             </div>
           ) : (
@@ -60,7 +60,7 @@ const Skills = () => {
                     </h3>
                     <div className="h-[2px] bg-[#30363d] flex-grow" />
                   </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
                     {groupedSkills[category].map((skill) => (
                       <SkillCard key={skill._id || skill.name} skill={skill} />
                     ))}

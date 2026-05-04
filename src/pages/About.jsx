@@ -4,6 +4,7 @@ import PageWrapper from '../components/layout/PageWrapper';
 import Container from '../components/ui/Container';
 import Button from '../components/ui/Button';
 import { HiDownload } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const [aboutData, setAboutData] = useState(null);
@@ -67,9 +68,11 @@ const About = () => {
                     </Button>
                   </a>
                 )}
-                <Button variant="secondary" className="px-6 py-2.5 text-sm">
-                  Let's Talk
-                </Button>
+                <Link to="/contact">
+                  <Button variant="secondary" className="px-6 py-2.5 text-sm">
+                    Let's Talk
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

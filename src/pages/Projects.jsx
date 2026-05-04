@@ -43,7 +43,7 @@ const Projects = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
-                <ProjectCard key={project.slug} project={project} />
+                <ProjectCard key={project._id} project={project} />
               ))}
               {projects.length === 0 && (
                 <div className="col-span-full py-32 text-center border-2 border-dashed border-slate-800 rounded-3xl">

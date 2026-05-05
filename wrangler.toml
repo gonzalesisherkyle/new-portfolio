@@ -1,3 +1,3 @@
-name = 'new-portfolio'
-pages_build_output_dir = "dist"
+name = "new-portfolio"
 compatibility_date = "2026-05-04"
+pages_build_output_dir = "./dist"

@@ -3,6 +3,6 @@ export const getImageUrl = (path) => {
   if (path.startsWith('http')) return path;
   
   // Get API base URL and remove the /api suffix
-  const baseUrl = (process.env.VITE_API_URL || import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace('/api', '');
+  const baseUrl = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace('/api', '');
   return `${baseUrl}${path}`;
 };
